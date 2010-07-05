@@ -33,6 +33,15 @@ class JobTest < Test::Unit::TestCase
       )
       assert_equal %q(before "quote -> \" <- quote" after), job.output
     end
+
+    should "act reasonable in edge cases" do
+      foo = %(quotes -> '" <- quotes)
+      job = new_job(
+        :template => %(before ':foo" between ":foo' after),
+        :foo => foo
+      )
+      assert_equal %(before '#{foo}" between "#{foo}' after), job.output
+    end
   end
 
 private

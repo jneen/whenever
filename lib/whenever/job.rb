@@ -27,7 +27,7 @@ module Whenever
 
         if char_before == single_quote && char_after == single_quote
           escape_single_quotes(option)
-        elsif char_after == double_quote && char_after == double_quote
+        elsif char_before == double_quote && char_after == double_quote
           escape_double_quotes(option)
         else
           option
